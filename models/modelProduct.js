@@ -1,7 +1,7 @@
 const db = require('./db');
 
 const modelProduct = {
-  async list() {
+  async getAll() {
     const sqlProducts = 'SELECT * FROM products';
     const [itens] = await db.query(sqlProducts);
     return itens;

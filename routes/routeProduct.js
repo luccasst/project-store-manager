@@ -3,7 +3,7 @@ const controllerProduct = require('../controllers/controllerProduct');
 
 const routerProduct = Router();
 
-routerProduct.get('/', controllerProduct.list);
+routerProduct.get('/', controllerProduct.getAll);
 routerProduct.get('/:id', controllerProduct.getById);
 routerProduct.post('/', controllerProduct.add);
 

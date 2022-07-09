@@ -1,17 +1,16 @@
 const serviceProduct = require('../services/serviceProduct');
-const productService = require('../services/serviceProduct');
 
 const controllerProduct = {
-  async list(req, res) {
-    const itens = await productService.list();
-    res.status(200).json(itens);
+  async getAll(req, res) {
+    const itens = await serviceProduct.getAll();
+   return res.status(200).json(itens);
   },
   async getById(req, res) {
     try {
-      const item = await productService.getById(req.params.id);
-      res.status(200).json(item);
+      const item = await serviceProduct.getById(req.params.id);
+     return res.status(200).json(item);
     } catch (error) {
-      res.status(404).json({ message: error.message });
+     return res.status(404).json({ message: error.message });
     }
   },
 

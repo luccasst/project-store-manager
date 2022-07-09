@@ -1,8 +1,8 @@
 const modelProduct = require('../models/modelProduct');
 
 const serviceProduct = {
-  async list() {
-    const itens = await modelProduct.list();
+  async getAll() {
+    const itens = await modelProduct.getAll();
     return itens;
   },
   async getById(id) {
