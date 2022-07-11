@@ -14,9 +14,14 @@ const controllerProduct = {
     }
   },
 
-  async add(req, res) {
-    const item = await serviceProduct.add(req.body.name);
-    return res.status(201).json(item);
+  async add(req, res, next) {
+    try {
+      const { name } = await serviceProduct.addValidateBody(req.body);
+      const item = await serviceProduct.add(name);
+      return res.status(201).json(item);
+    } catch (error) {
+      next(error);
+    }
   },
 
 };

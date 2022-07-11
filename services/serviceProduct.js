@@ -1,6 +1,12 @@
+const Joi = require('joi');
 const modelProduct = require('../models/modelProduct');
+const { RunSchemas } = require('./validate');
 
 const serviceProduct = {
+  addValidateBody: RunSchemas(Joi.object({
+    name: Joi.string().required().min(5),
+  })),
+
   async getAll() {
     const itens = await modelProduct.getAll();
     return itens;
