@@ -8,15 +8,15 @@ const serviceProduct = {
   })),
 
   async getAll() {
-    const itens = await modelProduct.getAll();
-    return itens;
+    const items = await modelProduct.getAll();
+    return items;
   },
   async getById(id) {
-    const itens = await modelProduct.getById(id);
-    if (!itens) {
+    const item = await modelProduct.getById(id);
+    if (!item) {
       throw new Error('Product not found');
     }
-    return itens;
+    return item;
   },
   async add(name) {
     const item = await modelProduct.add(name);

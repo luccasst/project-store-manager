@@ -11,11 +11,17 @@ const serviceSales = {
   ),
   async getById(id) {
     const item = await modelSales.getById(id);
-    if (!item) {
-      throw new Error('Product not found');
+    if (!item || item.length === 0) {
+      throw new Error('Sale not found');
     }
     return item;
   },
+
+  async getAll() {
+    const items = await modelSales.getAll();
+    return items;
+  },
+
   async add(sales) {
     const idSales = await modelSales.addProductSales();
     await Promise.all(sales.map((sale) => modelSales.add(sale)));
