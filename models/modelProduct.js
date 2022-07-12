@@ -12,6 +12,16 @@ const modelProduct = {
     console.log(item);
     return item;
   },
+
+  async productUpdate(name, id) {
+    const sql = `
+    UPDATE StoreManager.products
+    SET name = ?
+    WHERE id = ?;`;
+    const [item] = await db.query(sql, [name, id]);
+    return item;
+  },
+
   async add(name) {
     const sql = 'INSERT INTO products (name) VALUES (?)';
     const [{ insertId: id }] = await db.query(sql, [name]);

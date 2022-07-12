@@ -22,6 +22,17 @@ const serviceProduct = {
     const item = await modelProduct.add(name);
     return item;
   },
+
+  async productUpdate(name, id) {
+    await this.getById(id);
+    await modelProduct.productUpdate(name, id);
+    const productUpdate = {
+      id, 
+      name,
+    };
+    return productUpdate;
+  },
+
 };
 
 module.exports = serviceProduct;

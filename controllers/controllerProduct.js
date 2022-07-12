@@ -24,6 +24,16 @@ const controllerProduct = {
     }
   },
 
+  async productUpdate(req, res, next) {
+    try {
+      const { name } = await serviceProduct.addValidateBody(req.body);
+      const items = await serviceProduct.productUpdate(name, req.params.id);
+      return res.status(200).json(items);
+    } catch (error) {
+      next(error);
+    }
+  },
+
 };
 
 module.exports = controllerProduct;
