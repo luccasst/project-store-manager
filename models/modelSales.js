@@ -43,6 +43,15 @@ const modelSales = {
     return true;
   },
 
+  async updates(sales, id) {
+    const { productId, quantity } = sales;
+    const sql = `
+    UPDATE sales_products SET product_id = ?, quantity = ?
+    WHERE sale_id = ? AND product_id = ?`;
+    const [item] = await db.query(sql, [productId, quantity, id, productId]);
+    return item;
+  },
+
 };
 
 module.exports = modelSales;

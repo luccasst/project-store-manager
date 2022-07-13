@@ -38,6 +38,20 @@ const serviceSales = {
     return true;
   },
   
+  async updates(sales, id) {
+    await this.getById(id);
+    if (sales.length > 1) {
+      await Promise.all(sales.map((sale) => modelSales.updates(sale, id)));
+    } else {
+      await serviceSales.updates(sales, id);
+    }
+    const productUpdates = {
+      saleId: id,
+      itemsUpdated: sales,
+    };
+    return productUpdates;
+  },
+
 };
 
 module.exports = serviceSales;

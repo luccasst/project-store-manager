@@ -29,6 +29,17 @@ const controllerSales = {
     }
   },
 
+  async updates(req, res, next) {
+    try {
+      await Promise.all(req.body.map((eachOne) => serviceSales.addValidateBody(eachOne)));
+      await Promise.all(req.body.map((eachOne) => serviceProduct.getById(eachOne.productId)));
+      const item = await serviceSales.updates(req.body, req.params.id);
+      return res.status(200).json(item);
+    } catch (error) {
+      next(error);
+    }
+  },
+
   async delete(req, res, next) {
     try {
       await serviceSales.delete(req.params.id);
