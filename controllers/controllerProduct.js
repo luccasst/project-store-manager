@@ -34,6 +34,15 @@ const controllerProduct = {
     }
   },
 
+  async delete(req, res, next) {
+    try {
+      await serviceProduct.delete(req.params.id);
+      return res.status(204).json();
+    } catch (error) {
+      next(error);
+    }
+  },
+
 };
 
 module.exports = controllerProduct;

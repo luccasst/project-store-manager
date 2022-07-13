@@ -33,6 +33,12 @@ const serviceProduct = {
     return productUpdate;
   },
 
+  async delete(id) {
+    await this.getById(id);
+    await modelProduct.delete(id);
+    return true;
+  },
+
 };
 
 module.exports = serviceProduct;

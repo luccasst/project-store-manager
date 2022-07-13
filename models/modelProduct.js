@@ -27,6 +27,14 @@ const modelProduct = {
     const [{ insertId: id }] = await db.query(sql, [name]);
     return { name, id };
   },
+
+  async delete(id) {
+    const sql = `
+    DELETE FROM products WHERE id = ?`;
+    await db.query(sql, [id]);
+    return true;
+  },
+
 };
 
 module.exports = modelProduct;
