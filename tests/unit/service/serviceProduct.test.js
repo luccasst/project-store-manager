@@ -43,4 +43,15 @@ describe("services/serviceProduct", () => {
       chai.expect(serviceProduct.getById(1)).to.eventually.deep.equal({});
     });
   });
+  describe('add', () => {
+    it('deve ocorrer um erro, caso o modelProduct/add apresente um erro', () => {
+      sinon.stub(modelProduct, "add").resolves({});
+      chai.expect(serviceProduct.add("Martelo de Thor")).to.eventually.be.rejected;
+    });
+
+    it('deve ocorrer um erro, caso o modelProduct/add apresente um erro', () => {
+      sinon.stub(modelProduct, "add").resolves({});
+      chai.expect(serviceProduct.add("Martelo de Thor")).to.eventually.deep.equal({});
+    });
+  });
 });
