@@ -5,6 +5,7 @@ const routerSales = Router();
 
 routerSales.get('/:id', controllerSales.getById);
 routerSales.get('/', controllerSales.getAll);
+routerSales.delete('/:id', controllerSales.delete);
 routerSales.post('/', controllerSales.add);
 
 module.exports = routerSales;

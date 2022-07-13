@@ -29,6 +29,15 @@ const controllerSales = {
     }
   },
 
+  async delete(req, res, next) {
+    try {
+      await serviceSales.delete(req.params.id);
+      return res.status(204).json();
+    } catch (error) {
+      next(error);
+    }
+  },
+
 };
 
 module.exports = controllerSales;

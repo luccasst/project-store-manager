@@ -32,6 +32,12 @@ const serviceSales = {
     return ok;
   },
 
+  async delete(id) {
+    await this.getById(id);
+    await modelSales.delete(id);
+    return true;
+  },
+  
 };
 
 module.exports = serviceSales;
